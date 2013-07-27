@@ -27,8 +27,8 @@ namespace WindowsFormsApplication1
             warbrostopurge.Clear();
             string[] lines = System.IO.File.ReadAllLines(@"Warbros.csv");
             curbrocount = lines.Count();
-            char[] chrs;
-            char[] chrs2;
+            String[] chrs;
+            String[] chrs2;
             //char[] dchrs = new char[3];
             char[] mchrs = new char[3];
             //char[] nchrs = new char[2];
@@ -36,24 +36,13 @@ namespace WindowsFormsApplication1
             {
                 bro curbro = new bro();
                 int a = lines[i].Count();
-                chrs = new char[a];
-                chrs2 = new char[a];
-                lines[i].Count();
 
-                int b = lines[i].IndexOf(',') + 1;
 
-                chrs = new char[b];
-                chrs2 = new char[a-b];
-                lines[i].CopyTo(0, chrs, 0, b);
-                lines[i].CopyTo(b, chrs2, 0, a - b);
+                String[] line = lines[i].Split(',');
+                String date = line[0];
+                curbro.name = line[1];
 
-                curbro.date = new string(chrs);
-                curbro.name = new string(chrs2);
-
-                curbro.date.CopyTo(4, mchrs, 0, 3);
-                //curbro.date.CopyTo(7, nchrs, 0, 2);
-
-                string m = new string(mchrs);
+                string m = date.Substring(4, 3);
                 //string d = new string(nchrs);
 
                 switch (m)
